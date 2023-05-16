@@ -10,25 +10,31 @@ export function Cursor({ enabled }) {
       const { clientX, clientY } = e;
       setPosition({ x: clientX, y: clientY });
     };
+
+    const getDiv = document.querySelector('.cursor');
     if (enabled) {
       window.addEventListener('pointermove', handleMove);
+      getDiv.style.display = 'flex';
     }
 
     return () => {
       window.removeEventListener('pointermove', handleMove);
+      getDiv.style.display = 'none';
     };
   }, [enabled]);
 
   return (
     <div
+      className='cursor'
       style={{
+        display: 'none',
         position: 'absolute',
         backgroundColor: '#fff',
         borderRadius: '50%',
         opacity: '0.8',
         pointerEvents: 'none',
-        left: '-20px',
-        top: '-20px',
+        left: '30px',
+        top: '15px',
         width: '40px',
         height: '40px',
         transform: `translate(${position.x}px, ${position.y}px)`,
