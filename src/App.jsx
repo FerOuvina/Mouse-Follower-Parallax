@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Cursor } from './components/Cursor';
 import { Button } from './components/Button';
+import { Background } from './components/Background';
 import './App.css';
 
 function App() {
@@ -15,11 +16,10 @@ function App() {
     };
   }, [enabled]);
 
-  // TODO Toggle parallax
-
   return (
     <main>
       <Cursor enabled={enabled} />
+      <Background enabled={enabled} />
       <Button enabled={enabled} setEnabled={setEnabled} />
     </main>
   );
